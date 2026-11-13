@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink, Sparkles, Layers } from "lucide-react";
 import { GithubIcon } from "@/components/SocialIcons";
-import { ClientShowcaseSlider } from "@/components/ClientShowcaseSlider";
+import { ClientShowcaseSlider, Slide } from "@/components/ClientShowcaseSlider";
 import Image from "next/image";
 
 interface Project {
@@ -19,10 +19,55 @@ interface Project {
   metrics?: string;
   image?: string;
   isSlider?: boolean;
-  slides?: { title: string; category: string; image: string }[];
+  slides?: Slide[];
   liveUrl?: string;
   githubUrl?: string;
 }
+
+const clientWebsiteSlides: Slide[] = [
+  {
+    title: "Urbantrop Architecture",
+    category: "Architecture & Spatial Studio",
+    url: "https://urbantroparchitecture.com",
+    displayUrl: "urbantroparchitecture.com",
+    image: "/images/site-urbantrop.jpg",
+  },
+  {
+    title: "Royal Shawarma Hub",
+    category: "Hospitality & Food Experience",
+    url: "https://royalshawarmahub.com",
+    displayUrl: "royalshawarmahub.com",
+    image: "/images/site-royalshawarma.jpg",
+  },
+  {
+    title: "Arogya Ayurveda",
+    category: "Ayurvedic Healthcare Portal (Abu Dhabi)",
+    url: "https://arogyaayurveda.ae",
+    displayUrl: "arogyaayurveda.ae",
+    image: "/images/site-arogya.jpg",
+  },
+  {
+    title: "Avizakta",
+    category: "Brand Architecture & Digital Storefront",
+    url: "https://avizakta.com",
+    displayUrl: "avizakta.com",
+    image: "/images/site-avizakta.jpg",
+  },
+  {
+    title: "Balanco",
+    category: "HVAC TAB & Commissioning (Abu Dhabi)",
+    url: "https://balanco.ae",
+    displayUrl: "balanco.ae",
+    image: "/images/site-balanco.jpg",
+  },
+  {
+    title: "Venus Al Jadeed",
+    category: "Commercial Trading & Engineering",
+    url: "https://venus-aljadeed.com",
+    displayUrl: "venus-aljadeed.com",
+    image: "/images/site-venus.jpg",
+  },
+];
 
 const projects: Project[] = [
   {
@@ -89,49 +134,24 @@ const projects: Project[] = [
     id: "client-experiences",
     number: "04",
     title: "SELECTED CLIENT PLATFORMS",
-    tagline: "Commercial Freelance Deliveries Across Multiple Industries",
+    tagline: "Commercial Websites Engineered Across Global Markets",
     year: "2024 – 2026",
     category: "FREELANCE PRODUCTION ARCHITECTURE",
     description:
-      "A portfolio of 10+ production-ready websites delivered with responsive UI, strict SEO optimisation, SSL encryption, and schema markup for commercial businesses across diverse sectors.",
+      "A curated collection of live commercial platforms engineered for clients across India, UAE, and the Gulf. Built with responsive interfaces, strict SEO optimisation, sub-second performance, and custom brand typography.",
     bullets: [
-      "Zevora Groupe — International Food & Logistics Corporate Platform",
-      "Balanco — Engineering, HVAC TAB & Commissioning Platform (Abu Dhabi)",
-      "Arogya Ayurveda — Holistic Healthcare & Treatment Portal (Abu Dhabi)",
-      "Royal Shawarma Hub — Premium Middle Eastern Hospitality & Online Menu Portal",
-      "Urbantrop Architecture — Editorial architecture portfolio & spatial showcasing",
+      "1. urbantroparchitecture.com — Architecture & Spatial Studio",
+      "2. royalshawarmahub.com — Premium Middle Eastern Hospitality & Menu Portal",
+      "3. arogyaayurveda.ae — Authentic Ayurvedic Healthcare & Therapy (Abu Dhabi)",
+      "4. avizakta.com — Digital Commerce & Brand Storefront",
+      "5. balanco.ae — HVAC Testing, Balancing & Commissioning (Abu Dhabi)",
+      "6. venus-aljadeed.com — Commercial Engineering & Supplies Platform",
     ],
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Structured Data", "Vercel"],
-    metrics: "Sub-second load times, 100% SEO scores, interactive slider showcase",
+    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "SEO / Schema", "Vercel"],
+    metrics: "Live client websites • Sub-second load times • 100% SEO scores",
     isSlider: true,
-    slides: [
-      {
-        title: "Zevora Groupe",
-        category: "Export & Logistics Corporate",
-        image: "/images/client-zevora.jpg",
-      },
-      {
-        title: "Balanco",
-        category: "HVAC & Engineering Specialists (Abu Dhabi)",
-        image: "/images/client-balanco.jpg",
-      },
-      {
-        title: "Arogya Ayurveda",
-        category: "Healthcare & Therapy Portal (Abu Dhabi)",
-        image: "/images/client-arogya.jpg",
-      },
-      {
-        title: "Royal Shawarma Hub",
-        category: "Hospitality & Dining Platform",
-        image: "/images/client-royal-shawarma.jpg",
-      },
-      {
-        title: "Urbantrop Architecture",
-        category: "Architectural Studio Portfolio",
-        image: "/images/urbantrop-architecture.jpg",
-      },
-    ],
-    liveUrl: "#",
+    slides: clientWebsiteSlides,
+    liveUrl: "https://urbantroparchitecture.com",
     githubUrl: "https://github.com/Jasil-kj",
   },
 ];
@@ -206,7 +226,7 @@ export function SelectedWork() {
                   <div className={`lg:col-span-7 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
                     <div className="group relative bg-white border border-[#E6E6E2] p-2.5 sm:p-4 lg:p-5 shadow-xs overflow-hidden">
                       {project.isSlider && project.slides ? (
-                        /* Slideshow for Project 04 */
+                        /* Live Websites Slideshow for Project 04 */
                         <ClientShowcaseSlider slides={project.slides} />
                       ) : (
                         /* Standard Single Image View */
@@ -259,14 +279,34 @@ export function SelectedWork() {
                       {project.description}
                     </p>
 
-                    {/* Bullet Points directly from CV */}
-                    <div className="space-y-1.5 sm:space-y-2 pt-1">
-                      {project.bullets.map((b, i) => (
-                        <div key={i} className="flex items-start gap-2 text-xs font-mono text-[#666666] leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#111111] mt-1.5 shrink-0"></span>
-                          <span>{b}</span>
+                    {/* Bullet Points with Live Site Links */}
+                    <div className="space-y-2 pt-1">
+                      {project.isSlider && project.slides ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+                          {project.slides.map((s, idx) => (
+                            <a
+                              key={idx}
+                              href={s.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group/link flex items-center justify-between p-2 rounded bg-white border border-[#E6E6E2] hover:border-[#111111] transition-colors"
+                            >
+                              <div className="truncate mr-1">
+                                <span className="font-semibold text-[#111111] block truncate">{idx + 1}. {s.title}</span>
+                                <span className="text-[10px] text-[#777777] block truncate">{s.displayUrl}</span>
+                              </div>
+                              <ArrowUpRight className="w-3.5 h-3.5 text-[#777777] group-hover/link:text-[#111111] shrink-0" />
+                            </a>
+                          ))}
                         </div>
-                      ))}
+                      ) : (
+                        project.bullets.map((b, i) => (
+                          <div key={i} className="flex items-start gap-2 text-xs font-mono text-[#666666] leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#111111] mt-1.5 shrink-0"></span>
+                            <span>{b}</span>
+                          </div>
+                        ))
+                      )}
                     </div>
 
                     {/* Technical Highlight Metric */}

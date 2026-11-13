@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Globe } from "lucide-react";
 import Image from "next/image";
 
-interface Slide {
+export interface Slide {
   title: string;
   category: string;
+  url: string;
+  displayUrl: string;
   image: string;
 }
 
@@ -45,30 +47,41 @@ export function ClientShowcaseSlider({ slides }: ClientShowcaseSliderProps) {
     >
       {/* Top Header inside preview container */}
       <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-[#777777] pb-2.5 mb-1 border-b border-[#E6E6E2]">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="font-semibold text-[#111111] uppercase tracking-wider">
+        <div className="flex items-center gap-2 overflow-hidden mr-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+          <span className="font-semibold text-[#111111] uppercase tracking-wider truncate">
             {activeSlide.title}
           </span>
-          <span className="text-[#AAAAAA]">•</span>
-          <span className="uppercase tracking-widest text-[#777777] hidden sm:inline">
+          <span className="text-[#AAAAAA] hidden sm:inline">•</span>
+          <span className="uppercase tracking-widest text-[#777777] hidden md:inline truncate">
             {activeSlide.category}
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5">
-          <span className="text-[10px] font-mono text-[#111111] font-bold">
-            0{current + 1}
-          </span>
-          <span className="text-[#AAAAAA]">/</span>
-          <span className="text-[10px] font-mono text-[#777777]">
-            0{slides.length}
-          </span>
+        <div className="flex items-center gap-3 shrink-0">
+          <a
+            href={activeSlide.url}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono uppercase text-[#111111] hover:underline"
+          >
+            <span>{activeSlide.displayUrl}</span>
+            <ArrowUpRight className="w-3 h-3" />
+          </a>
+          <div className="flex items-center gap-1">
+            <span className="text-[10px] font-mono text-[#111111] font-bold">
+              0{current + 1}
+            </span>
+            <span className="text-[#AAAAAA]">/</span>
+            <span className="text-[10px] font-mono text-[#777777]">
+              0{slides.length}
+            </span>
+          </div>
         </div>
       </div>
 
       {/* Main Slideshow Frame */}
-      <div className="relative aspect-[16/10] w-full bg-[#E8E8E4] overflow-hidden border border-[#E6E6E2]">
+      <div className="relative aspect-[16/10] w-full bg-[#E8E8E4] overflow-hidden border border-[#E6E6E2] group">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
@@ -86,14 +99,26 @@ export function ClientShowcaseSlider({ slides }: ClientShowcaseSliderProps) {
               className="object-cover object-top"
               priority={current === 0}
             />
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
 
-            {/* Bottom Caption Pill */}
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+
+            {/* Bottom Caption Pill with Direct Visit Link */}
             <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white pointer-events-none">
-              <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] sm:text-xs font-mono uppercase tracking-wider">
-                {activeSlide.title} — {activeSlide.category}
+              <span className="px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md text-[10px] sm:text-xs font-mono uppercase tracking-wider flex items-center gap-2">
+                <Globe className="w-3 h-3 text-emerald-400" />
+                <span className="truncate max-w-[200px] sm:max-w-none">{activeSlide.title}</span>
               </span>
+
+              <a
+                href={activeSlide.url}
+                target="_blank"
+                rel="noreferrer"
+                className="pointer-events-auto inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-[#111111] font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-zinc-200 transition-colors shadow-lg"
+              >
+                <span>VISIT SITE</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -103,21 +128,21 @@ export function ClientShowcaseSlider({ slides }: ClientShowcaseSliderProps) {
           <button
             onClick={prevSlide}
             aria-label="Previous slide"
-            className="pointer-events-auto w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 hover:bg-white text-[#111111] backdrop-blur-md shadow-md flex items-center justify-center transition-all active:scale-95 touch-target"
+            className="pointer-events-auto w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/85 hover:bg-white text-[#111111] backdrop-blur-md shadow-md flex items-center justify-center transition-all active:scale-95 touch-target"
           >
             <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
           <button
             onClick={nextSlide}
             aria-label="Next slide"
-            className="pointer-events-auto w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 hover:bg-white text-[#111111] backdrop-blur-md shadow-md flex items-center justify-center transition-all active:scale-95 touch-target"
+            className="pointer-events-auto w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/85 hover:bg-white text-[#111111] backdrop-blur-md shadow-md flex items-center justify-center transition-all active:scale-95 touch-target"
           >
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
         </div>
       </div>
 
-      {/* Pagination Dot Indicators */}
+      {/* Pagination Dot Indicators & Quick Links */}
       <div className="mt-3 pt-2 border-t border-[#E6E6E2] flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           {slides.map((_, idx) => (
@@ -132,10 +157,9 @@ export function ClientShowcaseSlider({ slides }: ClientShowcaseSliderProps) {
           ))}
         </div>
         <span className="text-[10px] font-mono text-[#777777] uppercase tracking-wider">
-          AUTOPLAY • SWIPE READY
+          LIVE CLIENT COVERS • AUTOPLAY
         </span>
       </div>
     </div>
   );
 }
-
