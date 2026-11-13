@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, ExternalLink, Sparkles, Layers } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Sparkles, Layers, Globe } from "lucide-react";
 import { GithubIcon } from "@/components/SocialIcons";
 import { ClientShowcaseSlider, Slide } from "@/components/ClientShowcaseSlider";
 import Image from "next/image";
@@ -131,8 +131,29 @@ const projects: Project[] = [
     githubUrl: "https://github.com/Jasil-kj",
   },
   {
-    id: "client-experiences",
+    id: "dhooram",
     number: "04",
+    title: "DHOORAM (ദൂരം)",
+    tagline: "Offline-First Group Trip Planner & Split Expense PWA",
+    year: "2026",
+    category: "PWA // EXPENSE ALGORITHMS & ITINERARY INTELLIGENCE",
+    description:
+      "A free, privacy-first group travel management platform designed to plan day-by-day itineraries, track common physical cash pots, and resolve peer-to-peer debts with zero integer rounding errors and minimized UPI settlement transfers.",
+    bullets: [
+      "Engineered an offline-first Progressive Web App (PWA) with client-side state caching, local-first data storage, and zero external backend tracking.",
+      "Designed an exact integer-paise financial ledger eliminating currency rounding drift across multi-currency and split-bill operations.",
+      "Implemented a graph-based debt simplification algorithm minimizing total cross-person UPI transactions down to the mathematical minimum.",
+      "Built common cash pool tracking, daily itinerary timeline views, and instant WhatsApp-formatted settlement breakdown exports.",
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Offline PWA", "Graph Algorithms", "Cloudflare Pages"],
+    metrics: "100% Offline-first PWA • Minimal-transfer settlement graph • Zero rounding errors",
+    image: "/images/site-dhooram.jpg",
+    liveUrl: "https://dhooram.pages.dev/",
+    githubUrl: "https://github.com/Jasil-kj",
+  },
+  {
+    id: "client-experiences",
+    number: "05",
     title: "SELECTED CLIENT PLATFORMS",
     tagline: "Commercial Websites Engineered Across Global Markets",
     year: "2024 – 2026",
@@ -182,7 +203,7 @@ export function SelectedWork() {
           </div>
           <div className="max-w-md">
             <p className="text-xs sm:text-sm font-mono uppercase tracking-wider sm:tracking-widest text-[#777777] leading-relaxed">
-              Real-world AI systems and production web platforms from my verified CV.
+              Real-world AI systems and production web platforms from my verified portfolio.
             </p>
           </div>
         </motion.div>
@@ -226,7 +247,7 @@ export function SelectedWork() {
                   <div className={`lg:col-span-7 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
                     <div className="group relative bg-white border border-[#E6E6E2] p-2.5 sm:p-4 lg:p-5 shadow-xs overflow-hidden">
                       {project.isSlider && project.slides ? (
-                        /* Live Websites Slideshow for Project 04 */
+                        /* Live Websites Slideshow */
                         <ClientShowcaseSlider slides={project.slides} />
                       ) : (
                         /* Standard Single Image View */
@@ -247,7 +268,19 @@ export function SelectedWork() {
                               />
                             )}
 
-                            <div className="hidden lg:flex absolute inset-0 bg-[#111111]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center">
+                            {project.liveUrl && project.liveUrl !== "#" ? (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-[#111111] font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold shadow-lg hover:bg-zinc-200 transition-colors z-10"
+                              >
+                                <span>VISIT PLATFORM</span>
+                                <ArrowUpRight className="w-3 h-3" />
+                              </a>
+                            ) : null}
+
+                            <div className="hidden lg:flex absolute inset-0 bg-[#111111]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
                               <span className="px-5 py-2.5 rounded-full bg-[#F8F8F6] text-[#111111] font-mono text-xs uppercase tracking-widest flex items-center gap-2 shadow-2xl">
                                 <span>EXPLORE CODE &amp; ARCHITECTURE</span>
                                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -340,15 +373,28 @@ export function SelectedWork() {
 
                     {/* Project CTAs */}
                     <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#111111] text-[#F8F8F6] font-mono text-xs uppercase tracking-widest active:scale-98 hover:bg-black transition-transform touch-target"
-                      >
-                        <GithubIcon className="w-3.5 h-3.5" />
-                        <span>VIEW REPO</span>
-                      </a>
+                      {project.liveUrl && project.liveUrl !== "#" ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#111111] text-[#F8F8F6] font-mono text-xs uppercase tracking-widest active:scale-98 hover:bg-black transition-transform touch-target"
+                        >
+                          <Globe className="w-3.5 h-3.5" />
+                          <span>VISIT LIVE APP</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      ) : (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#111111] text-[#F8F8F6] font-mono text-xs uppercase tracking-widest active:scale-98 hover:bg-black transition-transform touch-target"
+                        >
+                          <GithubIcon className="w-3.5 h-3.5" />
+                          <span>VIEW REPO</span>
+                        </a>
+                      )}
                       <a
                         href="#contact"
                         className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-[#111111] text-[#111111] font-mono text-xs uppercase tracking-widest hover:bg-white active:bg-zinc-100 transition-colors touch-target"

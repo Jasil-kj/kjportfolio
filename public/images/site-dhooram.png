@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Dhooram (ദൂരം) — Free Group Trip Planner & Split Expense App</title>
+    <meta name="title" content="Dhooram (ദൂരം) — Free Group Trip Planner & Split Expense App" />
+    <meta name="description" content="Plan group trips, track day-by-day itineraries, manage physical cash pots, and split expenses with zero rounding errors. 100% offline-first PWA with UPI settlement minimization." />
+    <meta name="keywords" content="trip planner, group trip planner, travel expense tracker, split bills, splitwise alternative, offline trip app, cash pot tracker, itinerary planner, UPI travel settlement, dhooram, ദൂരം, india travel planner, kerala trip planner" />
+    <meta name="author" content="Dhooram" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://dhooram.pages.dev/" />
+
+    <!-- Google Search Console Verification Tags -->
+    <meta name="google-site-verification" content="BJ7Ke8XWTFRItkkFX-eGEQC1T--LF-1AHdFIF3QRyeA" />
+    <meta name="google-site-verification" content="C89Di4yOHH_vVDW6I67dH1dX5AN1xGnl7utTQS0D2zo" />
+
+    <!-- Geo & Regional SEO Tags (Targeting India & Global Travelers) -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
+    <meta name="geo.position" content="20.593684;78.96288" />
+    <meta name="ICBM" content="20.593684, 78.96288" />
+    <meta name="language" content="English, Malayalam, Hindi" />
+
+    <!-- Open Graph / Facebook / WhatsApp Preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dhooram.pages.dev/" />
+    <meta property="og:site_name" content="Dhooram (ദൂരം)" />
+    <meta property="og:title" content="Dhooram — Plan. Track. Share. Settle." />
+    <meta property="og:description" content="The definitive free group trip planning & split expense app. Offline-first, precise integer-paise ledger, common cash tracker, and WhatsApp settlement export." />
+    <meta property="og:image" content="https://dhooram.pages.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dhooram - Group Trip Planner and Expense Splitter" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://dhooram.pages.dev/" />
+    <meta name="twitter:title" content="Dhooram — Group Trip Planner & Expense Splitter" />
+    <meta name="twitter:description" content="Plan itineraries, track group budgets, manage physical cash pools, and minimize settlement transfers without internet." />
+    <meta name="twitter:image" content="https://dhooram.pages.dev/og-image.png" />
+
+    <!-- Mobile PWA & App Capabilities -->
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg" />
+    <link rel="apple-touch-icon" href="/logo-icon.svg" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Dhooram" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Agentic Discoverability -->
+    <link rel="ard" href="/.well-known/ard.json" />
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt Documentation" />
+
+    <!-- Typography Preconnect & Non-blocking Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    </noscript>
+
+    <!-- Schema.org Structured Data (JSON-LD) for Search Engines (Google / Bing) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://dhooram.pages.dev/#webapp",
+          "url": "https://dhooram.pages.dev/",
+          "name": "Dhooram (ദൂരം)",
+          "alternateName": "Dhooram Trip Planner",
+          "applicationCategory": "TravelApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "description": "Premium, offline-first group trip itinerary planning and multi-currency expense ledger app.",
+          "featureList": [
+            "Day-by-day group trip itinerary planning",
+            "Budget vs actual variance calculation",
+            "Integer-paise zero floating point error expense ledger",
+            "Itemized restaurant bill splitting with proportional taxes",
+            "Vehicle and room usage group splits",
+            "Physical common cash pot custody tracking and handovers",
+            "Minimum UPI debt settlement transfers",
+            "100% offline-first IndexedDB operation"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://dhooram.pages.dev/#website",
+          "url": "https://dhooram.pages.dev/",
+          "name": "Dhooram",
+          "description": "Plan. Track. Share. Settle.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://dhooram.pages.dev/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-CQUwlPnW.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-WkwZ5CU-.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-b1xlE5Nu.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-Cp3iDGoc.js">
+    <link rel="modulepreload" crossorigin href="/assets/db-4gYTbcxE.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CDTzGv8x.css">
+  </head>
+  <body class="bg-white text-black antialiased selection:bg-black selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>
